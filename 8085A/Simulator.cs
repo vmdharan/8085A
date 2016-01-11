@@ -8,12 +8,14 @@ namespace _8085A
     public partial class Simulator : Form
     {
         private CPU_8085A core1;
+        private int cmdLineNo;
 
         public Simulator()
         {
             InitializeComponent();
 
             core1 = new CPU_8085A();
+            cmdLineNo = 0;
         }
 
         // Display the values in memory.
@@ -26,13 +28,12 @@ namespace _8085A
             mRTB.Append("++++  0x00 0x01 0x02 0x03 0x04 0x05 0x06 "
                 + "0x07 0x08 0x09 0x0A 0x0B 0x0C 0x0D 0x0E 0x0F ");
 
+            memHdrRTB.AppendText(mRTB.ToString());
+            mRTB.Clear();
+
             memoryRTB.SelectionStart = memoryRTB.TextLength;
             memoryRTB.SelectionLength = 0;
-            memoryRTB.SelectionBackColor = Color.PaleGreen;
-            memoryRTB.AppendText(mRTB.ToString());
             memoryRTB.SelectionBackColor = Color.PowderBlue;
-
-            mRTB.Clear();
 
             for (i = 0; i < 4096; i++)
             {
@@ -42,12 +43,14 @@ namespace _8085A
                     iVal = "0" + iVal;
                 }
 
-                mRTB.Append(Environment.NewLine + iVal + "  ");
+                mRTB.Append(iVal + "  ");
 
                 for (j = 0; j < 16; j++)
                 {
                     mRTB.Append(string.Format("0x{0:X2}", core1.memory[16 * i + j]) + " ");
                 }
+
+                mRTB.Append("\n");
 
                 memoryRTB.SelectionBackColor = Color.PowderBlue;
                 memoryRTB.AppendText(mRTB.ToString());
@@ -104,8 +107,23 @@ namespace _8085A
             StringBuilder sb = new StringBuilder();
             sb.AppendLine(tboxCmd.Text);
 
+            /*
+            rtbCmdWin.SelectionStart = 0;
+            rtbCmdWin.SelectionLength = rtbCmdWin.Width;
+            if(cmdLineNo % 2 == 0)
+            {
+                rtbCmdWin.SelectionBackColor = Color.PaleGreen;
+            }
+            else
+            {
+                rtbCmdWin.SelectionBackColor = Color.PowderBlue;
+            }
+            */
+
             rtbCmdWin.AppendText(sb.ToString());
             tboxCmd.Clear();
+
+            //cmdLineNo++;
         }
     }
 }

@@ -64,6 +64,7 @@
             this.tboxStatZ = new System.Windows.Forms.TextBox();
             this.labelStatZ = new System.Windows.Forms.Label();
             this.memoryGB = new System.Windows.Forms.GroupBox();
+            this.memHdrRTB = new System.Windows.Forms.RichTextBox();
             this.memoryRTB = new System.Windows.Forms.RichTextBox();
             this.commandGB = new System.Windows.Forms.GroupBox();
             this.btnRunCmd = new System.Windows.Forms.Button();
@@ -120,29 +121,32 @@
             // 
             // tboxRegST
             // 
-            this.tboxRegST.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.tboxRegST.BackColor = System.Drawing.Color.PowderBlue;
+            this.tboxRegST.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tboxRegST.Location = new System.Drawing.Point(376, 69);
             this.tboxRegST.Name = "tboxRegST";
             this.tboxRegST.ReadOnly = true;
-            this.tboxRegST.Size = new System.Drawing.Size(65, 20);
+            this.tboxRegST.Size = new System.Drawing.Size(65, 23);
             this.tboxRegST.TabIndex = 34;
             // 
             // tboxRegA
             // 
-            this.tboxRegA.BackColor = System.Drawing.Color.PaleGreen;
+            this.tboxRegA.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.tboxRegA.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tboxRegA.Location = new System.Drawing.Point(58, 21);
             this.tboxRegA.Name = "tboxRegA";
             this.tboxRegA.ReadOnly = true;
-            this.tboxRegA.Size = new System.Drawing.Size(65, 20);
+            this.tboxRegA.Size = new System.Drawing.Size(65, 23);
             this.tboxRegA.TabIndex = 1;
             // 
             // tboxRegTM
             // 
-            this.tboxRegTM.BackColor = System.Drawing.Color.Khaki;
+            this.tboxRegTM.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.tboxRegTM.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tboxRegTM.Location = new System.Drawing.Point(58, 73);
             this.tboxRegTM.Name = "tboxRegTM";
             this.tboxRegTM.ReadOnly = true;
-            this.tboxRegTM.Size = new System.Drawing.Size(65, 20);
+            this.tboxRegTM.Size = new System.Drawing.Size(65, 23);
             this.tboxRegTM.TabIndex = 24;
             // 
             // labelRegTMP
@@ -156,11 +160,12 @@
             // 
             // tboxRegSP
             // 
-            this.tboxRegSP.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.tboxRegSP.BackColor = System.Drawing.Color.PowderBlue;
+            this.tboxRegSP.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tboxRegSP.Location = new System.Drawing.Point(376, 21);
             this.tboxRegSP.Name = "tboxRegSP";
             this.tboxRegSP.ReadOnly = true;
-            this.tboxRegSP.Size = new System.Drawing.Size(65, 20);
+            this.tboxRegSP.Size = new System.Drawing.Size(65, 23);
             this.tboxRegSP.TabIndex = 15;
             // 
             // labelRegA
@@ -192,47 +197,52 @@
             // 
             // tboxRegIN
             // 
-            this.tboxRegIN.BackColor = System.Drawing.Color.Khaki;
+            this.tboxRegIN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.tboxRegIN.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tboxRegIN.Location = new System.Drawing.Point(58, 47);
             this.tboxRegIN.Name = "tboxRegIN";
             this.tboxRegIN.ReadOnly = true;
-            this.tboxRegIN.Size = new System.Drawing.Size(65, 20);
+            this.tboxRegIN.Size = new System.Drawing.Size(65, 23);
             this.tboxRegIN.TabIndex = 3;
             // 
             // tboxRegE
             // 
-            this.tboxRegE.BackColor = System.Drawing.Color.PaleGreen;
-            this.tboxRegE.Location = new System.Drawing.Point(261, 47);
+            this.tboxRegE.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.tboxRegE.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tboxRegE.Location = new System.Drawing.Point(267, 47);
             this.tboxRegE.Name = "tboxRegE";
             this.tboxRegE.ReadOnly = true;
-            this.tboxRegE.Size = new System.Drawing.Size(65, 20);
+            this.tboxRegE.Size = new System.Drawing.Size(65, 23);
             this.tboxRegE.TabIndex = 9;
             // 
             // tboxRegPC
             // 
-            this.tboxRegPC.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.tboxRegPC.BackColor = System.Drawing.Color.PowderBlue;
+            this.tboxRegPC.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tboxRegPC.Location = new System.Drawing.Point(474, 21);
             this.tboxRegPC.Name = "tboxRegPC";
             this.tboxRegPC.ReadOnly = true;
-            this.tboxRegPC.Size = new System.Drawing.Size(65, 20);
+            this.tboxRegPC.Size = new System.Drawing.Size(65, 23);
             this.tboxRegPC.TabIndex = 19;
             // 
             // tboxStatAC
             // 
-            this.tboxStatAC.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.tboxStatAC.BackColor = System.Drawing.Color.PowderBlue;
+            this.tboxStatAC.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tboxStatAC.Location = new System.Drawing.Point(527, 70);
             this.tboxStatAC.Name = "tboxStatAC";
             this.tboxStatAC.ReadOnly = true;
-            this.tboxStatAC.Size = new System.Drawing.Size(12, 20);
+            this.tboxStatAC.Size = new System.Drawing.Size(12, 23);
             this.tboxStatAC.TabIndex = 32;
             // 
             // tboxRegL
             // 
-            this.tboxRegL.BackColor = System.Drawing.Color.PaleGreen;
-            this.tboxRegL.Location = new System.Drawing.Point(261, 73);
+            this.tboxRegL.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.tboxRegL.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tboxRegL.Location = new System.Drawing.Point(267, 73);
             this.tboxRegL.Name = "tboxRegL";
             this.tboxRegL.ReadOnly = true;
-            this.tboxRegL.Size = new System.Drawing.Size(65, 20);
+            this.tboxRegL.Size = new System.Drawing.Size(65, 23);
             this.tboxRegL.TabIndex = 13;
             // 
             // labelRegPC
@@ -246,11 +256,12 @@
             // 
             // tboxRegC
             // 
-            this.tboxRegC.BackColor = System.Drawing.Color.PaleGreen;
-            this.tboxRegC.Location = new System.Drawing.Point(261, 21);
+            this.tboxRegC.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.tboxRegC.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tboxRegC.Location = new System.Drawing.Point(267, 21);
             this.tboxRegC.Name = "tboxRegC";
             this.tboxRegC.ReadOnly = true;
-            this.tboxRegC.Size = new System.Drawing.Size(65, 20);
+            this.tboxRegC.Size = new System.Drawing.Size(65, 23);
             this.tboxRegC.TabIndex = 22;
             // 
             // labelRegSP
@@ -274,7 +285,7 @@
             // labelRegL
             // 
             this.labelRegL.AutoSize = true;
-            this.labelRegL.Location = new System.Drawing.Point(236, 76);
+            this.labelRegL.Location = new System.Drawing.Point(242, 76);
             this.labelRegL.Name = "labelRegL";
             this.labelRegL.Size = new System.Drawing.Size(16, 13);
             this.labelRegL.TabIndex = 12;
@@ -282,20 +293,22 @@
             // 
             // tboxStatCY
             // 
-            this.tboxStatCY.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.tboxStatCY.BackColor = System.Drawing.Color.PowderBlue;
+            this.tboxStatCY.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tboxStatCY.Location = new System.Drawing.Point(507, 70);
             this.tboxStatCY.Name = "tboxStatCY";
             this.tboxStatCY.ReadOnly = true;
-            this.tboxStatCY.Size = new System.Drawing.Size(13, 20);
+            this.tboxStatCY.Size = new System.Drawing.Size(13, 23);
             this.tboxStatCY.TabIndex = 30;
             // 
             // tboxRegH
             // 
-            this.tboxRegH.BackColor = System.Drawing.Color.PaleGreen;
+            this.tboxRegH.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.tboxRegH.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tboxRegH.Location = new System.Drawing.Point(163, 73);
             this.tboxRegH.Name = "tboxRegH";
             this.tboxRegH.ReadOnly = true;
-            this.tboxRegH.Size = new System.Drawing.Size(65, 20);
+            this.tboxRegH.Size = new System.Drawing.Size(65, 23);
             this.tboxRegH.TabIndex = 11;
             // 
             // labelStatCY
@@ -318,11 +331,12 @@
             // 
             // tboxStatP
             // 
-            this.tboxStatP.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.tboxStatP.BackColor = System.Drawing.Color.PowderBlue;
+            this.tboxStatP.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tboxStatP.Location = new System.Drawing.Point(488, 70);
             this.tboxStatP.Name = "tboxStatP";
             this.tboxStatP.ReadOnly = true;
-            this.tboxStatP.Size = new System.Drawing.Size(13, 20);
+            this.tboxStatP.Size = new System.Drawing.Size(13, 23);
             this.tboxStatP.TabIndex = 28;
             // 
             // labelRegH
@@ -346,7 +360,7 @@
             // labelRegE
             // 
             this.labelRegE.AutoSize = true;
-            this.labelRegE.Location = new System.Drawing.Point(236, 50);
+            this.labelRegE.Location = new System.Drawing.Point(242, 50);
             this.labelRegE.Name = "labelRegE";
             this.labelRegE.Size = new System.Drawing.Size(17, 13);
             this.labelRegE.TabIndex = 8;
@@ -354,20 +368,22 @@
             // 
             // tboxStatS
             // 
-            this.tboxStatS.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.tboxStatS.BackColor = System.Drawing.Color.PowderBlue;
+            this.tboxStatS.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tboxStatS.Location = new System.Drawing.Point(469, 70);
             this.tboxStatS.Name = "tboxStatS";
             this.tboxStatS.ReadOnly = true;
-            this.tboxStatS.Size = new System.Drawing.Size(13, 20);
+            this.tboxStatS.Size = new System.Drawing.Size(13, 23);
             this.tboxStatS.TabIndex = 26;
             // 
             // tboxRegB
             // 
-            this.tboxRegB.BackColor = System.Drawing.Color.PaleGreen;
+            this.tboxRegB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.tboxRegB.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tboxRegB.Location = new System.Drawing.Point(163, 21);
             this.tboxRegB.Name = "tboxRegB";
             this.tboxRegB.ReadOnly = true;
-            this.tboxRegB.Size = new System.Drawing.Size(65, 20);
+            this.tboxRegB.Size = new System.Drawing.Size(65, 23);
             this.tboxRegB.TabIndex = 3;
             // 
             // labelStatS
@@ -382,7 +398,7 @@
             // labelRegC
             // 
             this.labelRegC.AutoSize = true;
-            this.labelRegC.Location = new System.Drawing.Point(237, 24);
+            this.labelRegC.Location = new System.Drawing.Point(243, 24);
             this.labelRegC.Name = "labelRegC";
             this.labelRegC.Size = new System.Drawing.Size(17, 13);
             this.labelRegC.TabIndex = 6;
@@ -390,11 +406,12 @@
             // 
             // tboxRegD
             // 
-            this.tboxRegD.BackColor = System.Drawing.Color.PaleGreen;
+            this.tboxRegD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.tboxRegD.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tboxRegD.Location = new System.Drawing.Point(163, 47);
             this.tboxRegD.Name = "tboxRegD";
             this.tboxRegD.ReadOnly = true;
-            this.tboxRegD.Size = new System.Drawing.Size(65, 20);
+            this.tboxRegD.Size = new System.Drawing.Size(65, 23);
             this.tboxRegD.TabIndex = 5;
             // 
             // labelRegD
@@ -408,11 +425,12 @@
             // 
             // tboxStatZ
             // 
-            this.tboxStatZ.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.tboxStatZ.BackColor = System.Drawing.Color.PowderBlue;
+            this.tboxStatZ.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tboxStatZ.Location = new System.Drawing.Point(450, 70);
             this.tboxStatZ.Name = "tboxStatZ";
             this.tboxStatZ.ReadOnly = true;
-            this.tboxStatZ.Size = new System.Drawing.Size(13, 20);
+            this.tboxStatZ.Size = new System.Drawing.Size(13, 23);
             this.tboxStatZ.TabIndex = 17;
             // 
             // labelStatZ
@@ -426,6 +444,7 @@
             // 
             // memoryGB
             // 
+            this.memoryGB.Controls.Add(this.memHdrRTB);
             this.memoryGB.Controls.Add(this.memoryRTB);
             this.memoryGB.Location = new System.Drawing.Point(232, 12);
             this.memoryGB.Name = "memoryGB";
@@ -434,14 +453,25 @@
             this.memoryGB.TabStop = false;
             this.memoryGB.Text = "Memory";
             // 
+            // memHdrRTB
+            // 
+            this.memHdrRTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.memHdrRTB.Font = new System.Drawing.Font("Consolas", 8.25F);
+            this.memHdrRTB.Location = new System.Drawing.Point(7, 20);
+            this.memHdrRTB.Name = "memHdrRTB";
+            this.memHdrRTB.ReadOnly = true;
+            this.memHdrRTB.Size = new System.Drawing.Size(540, 19);
+            this.memHdrRTB.TabIndex = 1;
+            this.memHdrRTB.Text = "";
+            // 
             // memoryRTB
             // 
             this.memoryRTB.BackColor = System.Drawing.SystemColors.Window;
             this.memoryRTB.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.memoryRTB.Location = new System.Drawing.Point(7, 23);
+            this.memoryRTB.Location = new System.Drawing.Point(7, 40);
             this.memoryRTB.Name = "memoryRTB";
             this.memoryRTB.ReadOnly = true;
-            this.memoryRTB.Size = new System.Drawing.Size(540, 254);
+            this.memoryRTB.Size = new System.Drawing.Size(540, 237);
             this.memoryRTB.TabIndex = 0;
             this.memoryRTB.Text = "";
             // 
@@ -460,12 +490,15 @@
             // 
             // btnRunCmd
             // 
+            this.btnRunCmd.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.btnRunCmd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRunCmd.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnRunCmd.Location = new System.Drawing.Point(61, 351);
             this.btnRunCmd.Name = "btnRunCmd";
             this.btnRunCmd.Size = new System.Drawing.Size(75, 23);
             this.btnRunCmd.TabIndex = 3;
             this.btnRunCmd.Text = "Execute";
-            this.btnRunCmd.UseVisualStyleBackColor = true;
+            this.btnRunCmd.UseVisualStyleBackColor = false;
             this.btnRunCmd.Click += new System.EventHandler(this.btnRunCmd_Click);
             // 
             // cmdLabel
@@ -479,14 +512,16 @@
             // 
             // tboxCmd
             // 
+            this.tboxCmd.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tboxCmd.Location = new System.Drawing.Point(6, 310);
             this.tboxCmd.Name = "tboxCmd";
-            this.tboxCmd.Size = new System.Drawing.Size(200, 20);
+            this.tboxCmd.Size = new System.Drawing.Size(200, 22);
             this.tboxCmd.TabIndex = 1;
             // 
             // rtbCmdWin
             // 
             this.rtbCmdWin.BackColor = System.Drawing.SystemColors.Window;
+            this.rtbCmdWin.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rtbCmdWin.Location = new System.Drawing.Point(7, 23);
             this.rtbCmdWin.Name = "rtbCmdWin";
             this.rtbCmdWin.ReadOnly = true;
@@ -563,6 +598,7 @@
         private System.Windows.Forms.Label cmdLabel;
         private System.Windows.Forms.TextBox tboxCmd;
         private System.Windows.Forms.RichTextBox rtbCmdWin;
+        private System.Windows.Forms.RichTextBox memHdrRTB;
     }
 }
 
