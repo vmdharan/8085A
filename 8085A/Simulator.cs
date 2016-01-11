@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace _8085A
@@ -34,9 +28,9 @@ namespace _8085A
 
             memoryRTB.SelectionStart = memoryRTB.TextLength;
             memoryRTB.SelectionLength = 0;
-            memoryRTB.SelectionBackColor = Color.LawnGreen;
+            memoryRTB.SelectionBackColor = Color.PaleGreen;
             memoryRTB.AppendText(mRTB.ToString());
-            memoryRTB.SelectionBackColor = Color.SkyBlue;
+            memoryRTB.SelectionBackColor = Color.PowderBlue;
 
             mRTB.Clear();
 
@@ -55,7 +49,7 @@ namespace _8085A
                     mRTB.Append(string.Format("0x{0:X2}", core1.memory[16 * i + j]) + " ");
                 }
 
-                memoryRTB.SelectionBackColor = Color.SkyBlue;
+                memoryRTB.SelectionBackColor = Color.PowderBlue;
                 memoryRTB.AppendText(mRTB.ToString());
                 mRTB.Clear();
             }
@@ -100,16 +94,18 @@ namespace _8085A
         {
             // Display the data in the registers.
             listRegisters();
-            //Thread t1 = new Thread(listRegisters);
-            //t1.Start();
 
             // Display the data in the memory.
             listMemory();
-            //Thread t2 = new Thread(listMemory);
-            //t2.Start();
+        }
 
-            //t1.Join();
-            //t2.Join();
+        private void btnRunCmd_Click(object sender, EventArgs e)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine(tboxCmd.Text);
+
+            rtbCmdWin.AppendText(sb.ToString());
+            tboxCmd.Clear();
         }
     }
 }
