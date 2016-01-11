@@ -13,39 +13,39 @@ namespace _8085A
         // --------------------- //
 
         // Accumulator
-        protected byte regA;
+        public byte regA { get; set; }
 
         // Register pair B-C
-        protected byte regB;
-        protected byte regC;
+        public byte regB { get; set; }
+        public byte regC { get; set; }
 
         // Register pair D-E
-        protected byte regD;
-        protected byte regE;
+        public byte regD { get; set; }
+        public byte regE { get; set; }
 
         // Register pair H-L
-        protected byte regH;
-        protected byte regL;
+        public byte regH { get; set; }
+        public byte regL { get; set; }
 
         // Temporary register
-        protected byte regTM;
+        public byte regTM {get; set; }
 
         // Instruction register
-        protected byte regIN;
+        public byte regIN { get; set; }
 
         // Status register
-        protected byte regST;
+        public byte regST { get; set; }
 
         // Program counter
-        protected ushort regPC;
+        public ushort regPC { get; set; }
 
         // Stack point
-        protected ushort regSP;
+        public ushort regSP { get; set; }
 
         // ------ //
         // Memory //
         // ------ //
-        public byte[] memory;
+        public byte[] memory { get; set; }
 
 
         // Constructor

@@ -107,22 +107,24 @@
             this.registersGB.Controls.Add(this.labelRegA);
             this.registersGB.Location = new System.Drawing.Point(13, 12);
             this.registersGB.Name = "registersGB";
-            this.registersGB.Size = new System.Drawing.Size(247, 293);
+            this.registersGB.Size = new System.Drawing.Size(213, 293);
             this.registersGB.TabIndex = 0;
             this.registersGB.TabStop = false;
             this.registersGB.Text = "Registers";
             // 
             // tboxRegST
             // 
-            this.tboxRegST.Location = new System.Drawing.Point(30, 251);
+            this.tboxRegST.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.tboxRegST.Location = new System.Drawing.Point(30, 217);
             this.tboxRegST.Name = "tboxRegST";
+            this.tboxRegST.ReadOnly = true;
             this.tboxRegST.Size = new System.Drawing.Size(65, 20);
             this.tboxRegST.TabIndex = 34;
             // 
             // labelStatReg
             // 
             this.labelStatReg.AutoSize = true;
-            this.labelStatReg.Location = new System.Drawing.Point(6, 254);
+            this.labelStatReg.Location = new System.Drawing.Point(5, 220);
             this.labelStatReg.Name = "labelStatReg";
             this.labelStatReg.Size = new System.Drawing.Size(24, 13);
             this.labelStatReg.TabIndex = 33;
@@ -130,15 +132,17 @@
             // 
             // tboxStatAC
             // 
-            this.tboxStatAC.Location = new System.Drawing.Point(212, 251);
+            this.tboxStatAC.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.tboxStatAC.Location = new System.Drawing.Point(152, 267);
             this.tboxStatAC.Name = "tboxStatAC";
+            this.tboxStatAC.ReadOnly = true;
             this.tboxStatAC.Size = new System.Drawing.Size(20, 20);
             this.tboxStatAC.TabIndex = 32;
             // 
             // labelStatAC
             // 
             this.labelStatAC.AutoSize = true;
-            this.labelStatAC.Location = new System.Drawing.Point(211, 235);
+            this.labelStatAC.Location = new System.Drawing.Point(151, 251);
             this.labelStatAC.Name = "labelStatAC";
             this.labelStatAC.Size = new System.Drawing.Size(21, 13);
             this.labelStatAC.TabIndex = 31;
@@ -146,15 +150,17 @@
             // 
             // tboxStatCY
             // 
-            this.tboxStatCY.Location = new System.Drawing.Point(186, 251);
+            this.tboxStatCY.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.tboxStatCY.Location = new System.Drawing.Point(126, 267);
             this.tboxStatCY.Name = "tboxStatCY";
+            this.tboxStatCY.ReadOnly = true;
             this.tboxStatCY.Size = new System.Drawing.Size(20, 20);
             this.tboxStatCY.TabIndex = 30;
             // 
             // labelStatCY
             // 
             this.labelStatCY.AutoSize = true;
-            this.labelStatCY.Location = new System.Drawing.Point(185, 235);
+            this.labelStatCY.Location = new System.Drawing.Point(125, 251);
             this.labelStatCY.Name = "labelStatCY";
             this.labelStatCY.Size = new System.Drawing.Size(21, 13);
             this.labelStatCY.TabIndex = 29;
@@ -162,15 +168,17 @@
             // 
             // tboxStatP
             // 
-            this.tboxStatP.Location = new System.Drawing.Point(161, 251);
+            this.tboxStatP.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.tboxStatP.Location = new System.Drawing.Point(101, 267);
             this.tboxStatP.Name = "tboxStatP";
+            this.tboxStatP.ReadOnly = true;
             this.tboxStatP.Size = new System.Drawing.Size(20, 20);
             this.tboxStatP.TabIndex = 28;
             // 
             // labelStatP
             // 
             this.labelStatP.AutoSize = true;
-            this.labelStatP.Location = new System.Drawing.Point(165, 235);
+            this.labelStatP.Location = new System.Drawing.Point(105, 251);
             this.labelStatP.Name = "labelStatP";
             this.labelStatP.Size = new System.Drawing.Size(14, 13);
             this.labelStatP.TabIndex = 27;
@@ -178,15 +186,17 @@
             // 
             // tboxStatS
             // 
-            this.tboxStatS.Location = new System.Drawing.Point(135, 251);
+            this.tboxStatS.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.tboxStatS.Location = new System.Drawing.Point(75, 267);
             this.tboxStatS.Name = "tboxStatS";
+            this.tboxStatS.ReadOnly = true;
             this.tboxStatS.Size = new System.Drawing.Size(20, 20);
             this.tboxStatS.TabIndex = 26;
             // 
             // labelStatS
             // 
             this.labelStatS.AutoSize = true;
-            this.labelStatS.Location = new System.Drawing.Point(139, 235);
+            this.labelStatS.Location = new System.Drawing.Point(79, 251);
             this.labelStatS.Name = "labelStatS";
             this.labelStatS.Size = new System.Drawing.Size(14, 13);
             this.labelStatS.TabIndex = 25;
@@ -194,15 +204,17 @@
             // 
             // tboxRegTM
             // 
-            this.tboxRegTM.Location = new System.Drawing.Point(150, 200);
+            this.tboxRegTM.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.tboxRegTM.Location = new System.Drawing.Point(128, 176);
             this.tboxRegTM.Name = "tboxRegTM";
-            this.tboxRegTM.Size = new System.Drawing.Size(80, 20);
+            this.tboxRegTM.ReadOnly = true;
+            this.tboxRegTM.Size = new System.Drawing.Size(65, 20);
             this.tboxRegTM.TabIndex = 24;
             // 
             // labelRegTMP
             // 
             this.labelRegTMP.AutoSize = true;
-            this.labelRegTMP.Location = new System.Drawing.Point(125, 203);
+            this.labelRegTMP.Location = new System.Drawing.Point(101, 179);
             this.labelRegTMP.Name = "labelRegTMP";
             this.labelRegTMP.Size = new System.Drawing.Size(26, 13);
             this.labelRegTMP.TabIndex = 23;
@@ -210,29 +222,35 @@
             // 
             // tboxStatZ
             // 
-            this.tboxStatZ.Location = new System.Drawing.Point(109, 251);
+            this.tboxStatZ.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.tboxStatZ.Location = new System.Drawing.Point(49, 267);
             this.tboxStatZ.Name = "tboxStatZ";
+            this.tboxStatZ.ReadOnly = true;
             this.tboxStatZ.Size = new System.Drawing.Size(20, 20);
             this.tboxStatZ.TabIndex = 17;
             // 
             // tboxRegC
             // 
-            this.tboxRegC.Location = new System.Drawing.Point(150, 45);
+            this.tboxRegC.BackColor = System.Drawing.Color.PaleGreen;
+            this.tboxRegC.Location = new System.Drawing.Point(128, 45);
             this.tboxRegC.Name = "tboxRegC";
-            this.tboxRegC.Size = new System.Drawing.Size(80, 20);
+            this.tboxRegC.ReadOnly = true;
+            this.tboxRegC.Size = new System.Drawing.Size(65, 20);
             this.tboxRegC.TabIndex = 22;
             // 
             // tboxRegPC
             // 
-            this.tboxRegPC.Location = new System.Drawing.Point(30, 164);
+            this.tboxRegPC.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.tboxRegPC.Location = new System.Drawing.Point(128, 138);
             this.tboxRegPC.Name = "tboxRegPC";
-            this.tboxRegPC.Size = new System.Drawing.Size(200, 20);
+            this.tboxRegPC.ReadOnly = true;
+            this.tboxRegPC.Size = new System.Drawing.Size(65, 20);
             this.tboxRegPC.TabIndex = 19;
             // 
             // labelStatZ
             // 
             this.labelStatZ.AutoSize = true;
-            this.labelStatZ.Location = new System.Drawing.Point(113, 235);
+            this.labelStatZ.Location = new System.Drawing.Point(53, 251);
             this.labelStatZ.Name = "labelStatZ";
             this.labelStatZ.Size = new System.Drawing.Size(14, 13);
             this.labelStatZ.TabIndex = 16;
@@ -241,7 +259,7 @@
             // labelRegPC
             // 
             this.labelRegPC.AutoSize = true;
-            this.labelRegPC.Location = new System.Drawing.Point(5, 167);
+            this.labelRegPC.Location = new System.Drawing.Point(103, 141);
             this.labelRegPC.Name = "labelRegPC";
             this.labelRegPC.Size = new System.Drawing.Size(24, 13);
             this.labelRegPC.TabIndex = 18;
@@ -249,9 +267,11 @@
             // 
             // tboxRegSP
             // 
+            this.tboxRegSP.BackColor = System.Drawing.Color.PaleTurquoise;
             this.tboxRegSP.Location = new System.Drawing.Point(30, 138);
             this.tboxRegSP.Name = "tboxRegSP";
-            this.tboxRegSP.Size = new System.Drawing.Size(200, 20);
+            this.tboxRegSP.ReadOnly = true;
+            this.tboxRegSP.Size = new System.Drawing.Size(65, 20);
             this.tboxRegSP.TabIndex = 15;
             // 
             // labelRegSP
@@ -265,15 +285,17 @@
             // 
             // tboxRegIN
             // 
-            this.tboxRegIN.Location = new System.Drawing.Point(30, 200);
+            this.tboxRegIN.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.tboxRegIN.Location = new System.Drawing.Point(30, 176);
             this.tboxRegIN.Name = "tboxRegIN";
-            this.tboxRegIN.Size = new System.Drawing.Size(80, 20);
+            this.tboxRegIN.ReadOnly = true;
+            this.tboxRegIN.Size = new System.Drawing.Size(65, 20);
             this.tboxRegIN.TabIndex = 3;
             // 
             // labelRegIN
             // 
             this.labelRegIN.AutoSize = true;
-            this.labelRegIN.Location = new System.Drawing.Point(6, 203);
+            this.labelRegIN.Location = new System.Drawing.Point(6, 179);
             this.labelRegIN.Name = "labelRegIN";
             this.labelRegIN.Size = new System.Drawing.Size(21, 13);
             this.labelRegIN.TabIndex = 2;
@@ -281,15 +303,17 @@
             // 
             // tboxRegL
             // 
-            this.tboxRegL.Location = new System.Drawing.Point(150, 97);
+            this.tboxRegL.BackColor = System.Drawing.Color.PaleGreen;
+            this.tboxRegL.Location = new System.Drawing.Point(128, 97);
             this.tboxRegL.Name = "tboxRegL";
-            this.tboxRegL.Size = new System.Drawing.Size(80, 20);
+            this.tboxRegL.ReadOnly = true;
+            this.tboxRegL.Size = new System.Drawing.Size(65, 20);
             this.tboxRegL.TabIndex = 13;
             // 
             // labelRegL
             // 
             this.labelRegL.AutoSize = true;
-            this.labelRegL.Location = new System.Drawing.Point(125, 100);
+            this.labelRegL.Location = new System.Drawing.Point(103, 100);
             this.labelRegL.Name = "labelRegL";
             this.labelRegL.Size = new System.Drawing.Size(16, 13);
             this.labelRegL.TabIndex = 12;
@@ -297,9 +321,11 @@
             // 
             // tboxRegH
             // 
+            this.tboxRegH.BackColor = System.Drawing.Color.PaleGreen;
             this.tboxRegH.Location = new System.Drawing.Point(30, 97);
             this.tboxRegH.Name = "tboxRegH";
-            this.tboxRegH.Size = new System.Drawing.Size(80, 20);
+            this.tboxRegH.ReadOnly = true;
+            this.tboxRegH.Size = new System.Drawing.Size(65, 20);
             this.tboxRegH.TabIndex = 11;
             // 
             // labelRegH
@@ -313,15 +339,17 @@
             // 
             // tboxRegE
             // 
-            this.tboxRegE.Location = new System.Drawing.Point(150, 71);
+            this.tboxRegE.BackColor = System.Drawing.Color.PaleGreen;
+            this.tboxRegE.Location = new System.Drawing.Point(128, 71);
             this.tboxRegE.Name = "tboxRegE";
-            this.tboxRegE.Size = new System.Drawing.Size(80, 20);
+            this.tboxRegE.ReadOnly = true;
+            this.tboxRegE.Size = new System.Drawing.Size(65, 20);
             this.tboxRegE.TabIndex = 9;
             // 
             // labelRegE
             // 
             this.labelRegE.AutoSize = true;
-            this.labelRegE.Location = new System.Drawing.Point(125, 74);
+            this.labelRegE.Location = new System.Drawing.Point(103, 74);
             this.labelRegE.Name = "labelRegE";
             this.labelRegE.Size = new System.Drawing.Size(17, 13);
             this.labelRegE.TabIndex = 8;
@@ -330,7 +358,7 @@
             // labelRegC
             // 
             this.labelRegC.AutoSize = true;
-            this.labelRegC.Location = new System.Drawing.Point(126, 48);
+            this.labelRegC.Location = new System.Drawing.Point(104, 48);
             this.labelRegC.Name = "labelRegC";
             this.labelRegC.Size = new System.Drawing.Size(17, 13);
             this.labelRegC.TabIndex = 6;
@@ -338,9 +366,11 @@
             // 
             // tboxRegD
             // 
+            this.tboxRegD.BackColor = System.Drawing.Color.PaleGreen;
             this.tboxRegD.Location = new System.Drawing.Point(30, 71);
             this.tboxRegD.Name = "tboxRegD";
-            this.tboxRegD.Size = new System.Drawing.Size(80, 20);
+            this.tboxRegD.ReadOnly = true;
+            this.tboxRegD.Size = new System.Drawing.Size(65, 20);
             this.tboxRegD.TabIndex = 5;
             // 
             // labelRegD
@@ -354,9 +384,11 @@
             // 
             // tboxRegB
             // 
+            this.tboxRegB.BackColor = System.Drawing.Color.PaleGreen;
             this.tboxRegB.Location = new System.Drawing.Point(30, 45);
             this.tboxRegB.Name = "tboxRegB";
-            this.tboxRegB.Size = new System.Drawing.Size(80, 20);
+            this.tboxRegB.ReadOnly = true;
+            this.tboxRegB.Size = new System.Drawing.Size(65, 20);
             this.tboxRegB.TabIndex = 3;
             // 
             // labelRegB
@@ -370,9 +402,11 @@
             // 
             // tboxRegA
             // 
+            this.tboxRegA.BackColor = System.Drawing.Color.PaleGreen;
             this.tboxRegA.Location = new System.Drawing.Point(30, 20);
             this.tboxRegA.Name = "tboxRegA";
-            this.tboxRegA.Size = new System.Drawing.Size(80, 20);
+            this.tboxRegA.ReadOnly = true;
+            this.tboxRegA.Size = new System.Drawing.Size(65, 20);
             this.tboxRegA.TabIndex = 1;
             // 
             // labelRegA
@@ -387,9 +421,9 @@
             // memoryGB
             // 
             this.memoryGB.Controls.Add(this.memoryRTB);
-            this.memoryGB.Location = new System.Drawing.Point(279, 12);
+            this.memoryGB.Location = new System.Drawing.Point(232, 12);
             this.memoryGB.Name = "memoryGB";
-            this.memoryGB.Size = new System.Drawing.Size(573, 293);
+            this.memoryGB.Size = new System.Drawing.Size(553, 293);
             this.memoryGB.TabIndex = 1;
             this.memoryGB.TabStop = false;
             this.memoryGB.Text = "Memory";
@@ -399,7 +433,8 @@
             this.memoryRTB.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.memoryRTB.Location = new System.Drawing.Point(7, 23);
             this.memoryRTB.Name = "memoryRTB";
-            this.memoryRTB.Size = new System.Drawing.Size(560, 264);
+            this.memoryRTB.ReadOnly = true;
+            this.memoryRTB.Size = new System.Drawing.Size(540, 264);
             this.memoryRTB.TabIndex = 0;
             this.memoryRTB.Text = "";
             // 
@@ -407,9 +442,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(864, 335);
+            this.ClientSize = new System.Drawing.Size(795, 313);
             this.Controls.Add(this.memoryGB);
             this.Controls.Add(this.registersGB);
+            this.DoubleBuffered = true;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Simulator";
             this.Text = "8085A";
             this.Load += new System.EventHandler(this.Simulator_Load);
