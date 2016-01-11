@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CPU_8085A.cs" />
     <Compile Include="Simulator.cs">
       <SubType>Form</SubType>
     </Compile>

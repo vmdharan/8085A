@@ -202,11 +202,11 @@
             // labelRegTMP
             // 
             this.labelRegTMP.AutoSize = true;
-            this.labelRegTMP.Location = new System.Drawing.Point(126, 203);
+            this.labelRegTMP.Location = new System.Drawing.Point(125, 203);
             this.labelRegTMP.Name = "labelRegTMP";
-            this.labelRegTMP.Size = new System.Drawing.Size(17, 13);
+            this.labelRegTMP.Size = new System.Drawing.Size(26, 13);
             this.labelRegTMP.TabIndex = 23;
-            this.labelRegTMP.Text = "T:";
+            this.labelRegTMP.Text = "TM:";
             // 
             // tboxStatZ
             // 
@@ -389,16 +389,17 @@
             this.memoryGB.Controls.Add(this.memoryRTB);
             this.memoryGB.Location = new System.Drawing.Point(279, 12);
             this.memoryGB.Name = "memoryGB";
-            this.memoryGB.Size = new System.Drawing.Size(382, 293);
+            this.memoryGB.Size = new System.Drawing.Size(573, 293);
             this.memoryGB.TabIndex = 1;
             this.memoryGB.TabStop = false;
             this.memoryGB.Text = "Memory";
             // 
             // memoryRTB
             // 
+            this.memoryRTB.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.memoryRTB.Location = new System.Drawing.Point(7, 23);
             this.memoryRTB.Name = "memoryRTB";
-            this.memoryRTB.Size = new System.Drawing.Size(369, 264);
+            this.memoryRTB.Size = new System.Drawing.Size(560, 264);
             this.memoryRTB.TabIndex = 0;
             this.memoryRTB.Text = "";
             // 
@@ -406,11 +407,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(673, 335);
+            this.ClientSize = new System.Drawing.Size(864, 335);
             this.Controls.Add(this.memoryGB);
             this.Controls.Add(this.registersGB);
             this.Name = "Simulator";
             this.Text = "8085A";
+            this.Load += new System.EventHandler(this.Simulator_Load);
             this.registersGB.ResumeLayout(false);
             this.registersGB.PerformLayout();
             this.memoryGB.ResumeLayout(false);
