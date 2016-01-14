@@ -69,11 +69,11 @@ namespace _8085A
                     mRTB.Append(string.Format("0x{0:X2}", core1.memory[k + j]) + " ");
                 }
                 mRTB.Append(string.Format("0x{0:X2}", core1.memory[k + j]) + " \n");
-
-                memoryRTB.SelectionBackColor = Color.PowderBlue;
-                memoryRTB.AppendText(mRTB.ToString());
-                mRTB.Clear();
             }
+
+            memoryRTB.SelectionBackColor = Color.PowderBlue;
+            memoryRTB.AppendText(mRTB.ToString());
+            mRTB.Clear();
 
             sw.Stop();
             File.AppendAllText("performance.out", "listMemory: "
