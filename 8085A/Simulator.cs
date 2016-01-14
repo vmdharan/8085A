@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace _8085A
@@ -18,18 +21,32 @@ namespace _8085A
             cmdLineNo = 0;
         }
 
-        // Display the values in memory.
-        private void listMemory()
+        // Display the memory header.
+        private void listMemoryHeader()
         {
-            int i, j;
-            StringBuilder mRTB = new StringBuilder();
-            string iVal;
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
 
+            StringBuilder mRTB = new StringBuilder();
             mRTB.Append("++++  0x00 0x01 0x02 0x03 0x04 0x05 0x06 "
                 + "0x07 0x08 0x09 0x0A 0x0B 0x0C 0x0D 0x0E 0x0F ");
 
             memHdrRTB.AppendText(mRTB.ToString());
-            mRTB.Clear();
+
+            sw.Stop();
+            File.AppendAllText("performance.out", "listMemoryHeader: "
+                + sw.ElapsedMilliseconds.ToString() + "\n");
+        }
+
+        // Display the values in memory.
+        private void listMemory()
+        {
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+
+            int i, j, k;
+            StringBuilder mRTB = new StringBuilder();
+            string iVal;
 
             memoryRTB.SelectionStart = memoryRTB.TextLength;
             memoryRTB.SelectionLength = 0;
@@ -45,22 +62,30 @@ namespace _8085A
 
                 mRTB.Append(iVal + "  ");
 
-                for (j = 0; j < 16; j++)
-                {
-                    mRTB.Append(string.Format("0x{0:X2}", core1.memory[16 * i + j]) + " ");
-                }
+                k = i << 4;
 
-                mRTB.Append("\n");
+                for (j = 0; j < 15; j++)
+                {
+                    mRTB.Append(string.Format("0x{0:X2}", core1.memory[k + j]) + " ");
+                }
+                mRTB.Append(string.Format("0x{0:X2}", core1.memory[k + j]) + " \n");
 
                 memoryRTB.SelectionBackColor = Color.PowderBlue;
                 memoryRTB.AppendText(mRTB.ToString());
                 mRTB.Clear();
             }
+
+            sw.Stop();
+            File.AppendAllText("performance.out", "listMemory: "
+                + sw.ElapsedMilliseconds.ToString() + "\n");
         }
 
         // Display the values in the register.
         private void listRegisters()
         {
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+            
             // Display accumulator.
             tboxRegA.Text = string.Format("0x{0:X2}", core1.regA);
 
@@ -91,12 +116,19 @@ namespace _8085A
             tboxStatP.Text = "-";
             tboxStatCY.Text = "-";
             tboxStatAC.Text = "-";
+
+            sw.Stop();
+            File.AppendAllText("performance.out","listRegisters: " 
+                + sw.ElapsedMilliseconds.ToString() + "\n");
         }
 
         private void Simulator_Load(object sender, EventArgs e)
         {
             // Display the data in the registers.
             listRegisters();
+
+            // Display the memory header.
+            listMemoryHeader();
 
             // Display the data in the memory.
             listMemory();
@@ -122,6 +154,26 @@ namespace _8085A
 
             rtbCmdWin.AppendText(sb.ToString());
             tboxCmd.Clear();
+
+            // Parse the instruction.
+            try
+            {
+                core1.regIN = Convert.ToByte(sb.ToString().TrimEnd('\r', '\n'), 16);
+                core1.decode();
+            }
+            catch (Exception ex)
+            {
+                // Perform error handling.
+            }
+            
+            // Update the register debug info.
+            listRegisters();
+
+            // Only update the memory debug info if the checkbox is selected.
+            if(cbShowMem.Checked)
+            {
+                listMemory();
+            }
 
             //cmdLineNo++;
         }

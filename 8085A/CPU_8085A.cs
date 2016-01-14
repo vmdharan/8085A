@@ -59,7 +59,7 @@
         // Decode instruction
         public void decode()
         {
-            byte instr = 0;
+            byte instr = regIN;
 
             switch (instr)
             {
@@ -72,67 +72,67 @@
                 // Move Register
                 // MOV r1, r2
                 // Dest = Register B
-                case 0x40: break;
-                case 0x41: break;
-                case 0x42: break;
-                case 0x43: break;
-                case 0x44: break;
-                case 0x45: break;
-                case 0x47: break;
+                case 0x40: regB = regB; break;
+                case 0x41: regB = regC; break;
+                case 0x42: regB = regD; break;
+                case 0x43: regB = regE; break;
+                case 0x44: regB = regH; break;
+                case 0x45: regB = regL; break;
+                case 0x47: regB = regA; break;
 
                 // Dest = Register C
-                case 0x48: break;
-                case 0x49: break;
-                case 0x4A: break;
-                case 0x4B: break;
-                case 0x4C: break;
-                case 0x4D: break;
-                case 0x4F: break;
+                case 0x48: regC = regB; break;
+                case 0x49: regC = regC; break;
+                case 0x4A: regC = regD; break;
+                case 0x4B: regC = regE; break;
+                case 0x4C: regC = regH; break;
+                case 0x4D: regC = regL; break;
+                case 0x4F: regC = regA; break;
 
                 // Dest = Register D
-                case 0x50: break;
-                case 0x51: break;
-                case 0x52: break;
-                case 0x53: break;
-                case 0x54: break;
-                case 0x55: break;
-                case 0x57: break;
+                case 0x50: regD = regB; break;
+                case 0x51: regD = regC; break;
+                case 0x52: regD = regD; break;
+                case 0x53: regD = regE; break;
+                case 0x54: regD = regH; break;
+                case 0x55: regD = regL; break;
+                case 0x57: regD = regA; break;
 
                 // Dest = Register E
-                case 0x58: break;
-                case 0x59: break;
-                case 0x5A: break;
-                case 0x5B: break;
-                case 0x5C: break;
-                case 0x5D: break;
-                case 0x5F: break;
+                case 0x58: regE = regB; break;
+                case 0x59: regE = regC; break;
+                case 0x5A: regE = regD; break;
+                case 0x5B: regE = regE; break;
+                case 0x5C: regE = regH; break;
+                case 0x5D: regE = regL; break;
+                case 0x5F: regE = regA; break;
 
                 // Dest = Register H
-                case 0x60: break;
-                case 0x61: break;
-                case 0x62: break;
-                case 0x63: break;
-                case 0x64: break;
-                case 0x65: break;
-                case 0x67: break;
+                case 0x60: regH = regB; break;
+                case 0x61: regH = regC; break;
+                case 0x62: regH = regD; break;
+                case 0x63: regH = regE; break;
+                case 0x64: regH = regH; break;
+                case 0x65: regH = regL; break;
+                case 0x67: regH = regA; break;
 
                 // Dest = Register L
-                case 0x68: break;
-                case 0x69: break;
-                case 0x6A: break;
-                case 0x6B: break;
-                case 0x6C: break;
-                case 0x6D: break;
-                case 0x6F: break;
+                case 0x68: regL = regB; break;
+                case 0x69: regL = regC; break;
+                case 0x6A: regL = regD; break;
+                case 0x6B: regL = regE; break;
+                case 0x6C: regL = regH; break;
+                case 0x6D: regL = regL; break;
+                case 0x6F: regL = regA; break;
 
                 // Dest = Register A
-                case 0x78: break;
-                case 0x79: break;
-                case 0x7A: break;
-                case 0x7B: break;
-                case 0x7C: break;
-                case 0x7D: break;
-                case 0x7F: break;
+                case 0x78: regA = regB; break;
+                case 0x79: regA = regC; break;
+                case 0x7A: regA = regD; break;
+                case 0x7B: regA = regE; break;
+                case 0x7C: regA = regH; break;
+                case 0x7D: regA = regL; break;
+                case 0x7F: regA = regA; break;
 
                 // Move from memory
                 // MOV r, M
