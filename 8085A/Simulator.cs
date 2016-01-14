@@ -158,7 +158,28 @@ namespace _8085A
             // Parse the instruction.
             try
             {
-                core1.regIN = Convert.ToByte(sb.ToString().TrimEnd('\r', '\n'), 16);
+                string[] words = sb.ToString().Trim('\r','\n').Split(' ');
+
+                // Single-byte instruction.
+                if (words.Length == 1)
+                {
+                    core1.regIN = Convert.ToByte(words[0].ToString(), 16);
+                }
+                // Two-byte instruction.
+                else if(words.Length == 2)
+                {
+                    core1.regIN = Convert.ToByte(words[0].ToString(), 16);
+                    core1.d1 = Convert.ToByte(words[1].ToString(), 16);
+                }
+                // Three-byte instruction.
+                else if(words.Length == 3)
+                {
+                    core1.regIN = Convert.ToByte(words[0].ToString(), 16);
+                    core1.d1 = Convert.ToByte(words[1].ToString(), 16);
+                    core1.d2 = Convert.ToByte(words[2].ToString(), 16);
+                }
+
+                //core1.regIN = Convert.ToByte(sb.ToString().TrimEnd('\r', '\n'), 16);
                 core1.decode();
             }
             catch (Exception ex)

@@ -41,11 +41,17 @@
         // ------ //
         public byte[] memory { get; set; }
 
+        // Temporary values
+        public byte d1 { get; set; }
+        public byte d2 { get; set; }
 
         // Constructor
         public CPU_8085A()
         {
             memory = new byte[0x010000];
+
+            d1 = 0x00;
+            d2 = 0x00;
         }
 
         // Main loop
@@ -136,74 +142,155 @@
 
                 // Move from memory
                 // MOV r, M
-                case 0x46: break;
-                case 0x4E: break;
-                case 0x56: break;
-                case 0x5E: break;
-                case 0x66: break;
-                case 0x6E: break;
-                case 0x7E: break;
+                case 0x46:
+                    regB = memory[(regH << 8) | regL];
+                    break;
+                case 0x4E:
+                    regC = memory[(regH << 8) | regL];
+                    break;
+                case 0x56:
+                    regD = memory[(regH << 8) | regL];
+                    break;
+                case 0x5E:
+                    regE = memory[(regH << 8) | regL];
+                    break;
+                case 0x66:
+                    regH = memory[(regH << 8) | regL];
+                    break;
+                case 0x6E:
+                    regL = memory[(regH << 8) | regL];
+                    break;
+                case 0x7E:
+                    regA = memory[(regH << 8) | regL];
+                    break;
 
                 // Move to memory
                 // MOV M, r
-                case 0x70: break;
-                case 0x71: break;
-                case 0x72: break;
-                case 0x73: break;
-                case 0x74: break;
-                case 0x75: break;
-                case 0x77: break;
+                case 0x70:
+                    memory[(regH << 8) | regL] = regB;
+                    break;
+                case 0x71:
+                    memory[(regH << 8) | regL] = regC;
+                    break;
+                case 0x72:
+                    memory[(regH << 8) | regL] = regD;
+                    break;
+                case 0x73:
+                    memory[(regH << 8) | regL] = regE;
+                    break;
+                case 0x74:
+                    memory[(regH << 8) | regL] = regH;
+                    break;
+                case 0x75:
+                    memory[(regH << 8) | regL] = regL;
+                    break;
+                case 0x77:
+                    memory[(regH << 8) | regL] = regA;
+                    break;
 
                 // Move immediate
                 // MVI r, data
-                case 0x06: break;
-                case 0x0E: break;
-                case 0x16: break;
-                case 0x1E: break;
-                case 0x26: break;
-                case 0x2E: break;
-                case 0x3E: break;
+                case 0x06:
+                    regB = d1;
+                    break;
+                case 0x0E:
+                    regC = d1;
+                    break;
+                case 0x16:
+                    regD = d1;
+                    break;
+                case 0x1E:
+                    regE = d1;
+                    break;
+                case 0x26:
+                    regH = d1;
+                    break;
+                case 0x2E:
+                    regL = d1;
+                    break;
+                case 0x3E:
+                    regA = d1;
+                    break;
 
                 // Move to memory immediate
                 // MVI M, data
-                case 0x36: break;
+                case 0x36:
+                    memory[(regH << 8) | regL] = d1;
+                    break;
 
                 // Load register pair immediate
                 // LXI rp, data 16
-                case 0x01: break;
-                case 0x11: break;
-                case 0x21: break;
-                case 0x31: break;
+                case 0x01:
+                    regB = d2;
+                    regC = d1;
+                    break;
+                case 0x11:
+                    regD = d2;
+                    regE = d1;
+                    break;
+                case 0x21:
+                    regH = d2;
+                    regL = d1;
+                    break;
+                case 0x31:
+                    regSP = (ushort)((d2 << 8) | d1);
+                    break;
 
                 // Load Accumulator direct
                 // LDA addr
-                case 0x3A: break;
+                case 0x3A:
+                    regA = memory[(d2 << 8) | d1];
+                    break;
 
                 // Store Accumulator direct
                 // STA addr
-                case 0x32: break;
+                case 0x32:
+                    memory[(d2 << 8) | d1] = regA;
+                    break;
 
                 // Load H and L direct
                 // LHLD addr
-                case 0x2A: break;
+                case 0x2A:
+                    regL = memory[(d2 << 8) | d1];
+                    regH = memory[((d2 << 8) | d1) + 1];
+                    break;
 
                 // Store H and L direct
                 // SHLD addr
-                case 0x22: break;
+                case 0x22:
+                    memory[(d2 << 8) | d1] = regL;
+                    memory[((d2 << 8) | d1) + 1] = regH;
+                    break;
 
                 // Load accumulator indirect (RP using only B-C or D-E)
                 // LDAX rp
-                case 0x0A: break;
-                case 0x1A: break;
+                case 0x0A:
+                    regA = memory[(regB << 8) | regC];
+                    break;
+                case 0x1A:
+                    regA = memory[(regD << 8) | regE];
+                    break;
 
                 // Store accumulator indirect (RP using only B-C or D-E)
                 // STAX rp
-                case 0x02: break;
-                case 0x12: break;
+                case 0x02:
+                    memory[(regB << 8) | regC] = regA;
+                    break;
+                case 0x12:
+                    memory[(regD << 8) | regE] = regA;
+                    break;
 
                 // Exchange H and L with D and E
                 // XCHG
-                case 0xEB: break;
+                case 0xEB:
+                    regTM = regH;
+                    regH = regD;
+                    regD = regTM;
+
+                    regTM = regL;
+                    regL = regE;
+                    regE = regTM;
+                    break;
 
 
                 //////////////////////
