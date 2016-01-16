@@ -27,8 +27,16 @@
         // Instruction register
         public byte regIN { get; set; }
 
-        // Status register
-        public byte regST { get; set; }
+        // Flags register
+        public byte regFL { get; set; }
+        public int flag_Z { get; set; }
+        public int flag_P { get; set; }
+        public int flag_S { get; set; }
+        public int flag_CY { get; set; }
+        public int flag_AC { get; set; }
+
+        // Interrupts
+        public bool EN_interrupt { get; set; }
 
         // Program counter
         public ushort regPC { get; set; }
@@ -52,6 +60,203 @@
 
             d1 = 0x00;
             d2 = 0x00;
+        }
+
+        // Convert a byte to a bit-string representation.
+        // High order bit is in index 0.
+        // Low order bit is in index 7.
+        public char[] convertFromByte(byte byteVal)
+        {
+            int i;
+            int n = 128;
+            int b = (int)byteVal & 0x000000FF;
+            char[] bufferVal = new char[8];
+
+            for (i = 0; i < 8; i++)
+            {
+                if ((b / n) < 1.0)
+                {
+                    bufferVal[i] = (char)0;
+                }
+                else
+                {
+                    bufferVal[i] = (char)1;
+                    b = b - n;
+                }
+
+                n = n / 2;
+            }
+
+            return bufferVal;
+        }
+
+        // Convert a bit-stringto a byte representation
+        public byte convertToByte(char[] bytebuffer)
+        {
+            int i;
+            int n = 0;
+
+            for (i = 0; i < 8; i++)
+            {
+                if (bytebuffer[i] == 1)
+                {
+                    n += (1 << (7 - i));
+                }
+            }
+
+            return (byte)n;
+        }
+
+        // Update Carry flag.
+        private void updateCarryFlag(int carry)
+        {
+            // Set Carry flag.
+            if (carry == 1)
+            {
+                flag_CY = 1;
+            }
+            else
+            {
+                flag_CY = 0;
+            }
+        }
+
+        // Update Sign flag.
+        private void updateSignFlag(char[] rb)
+        {
+            // Set Sign flag.
+            if (rb[0] == 1)
+            {
+                flag_S = 1;
+            }
+            else
+            {
+                flag_S = 0;
+            }
+        }
+
+        // Update Zero flag.
+        private void updateZeroFlag(byte result)
+        {
+            // Set Zero flag.
+            if (result == 0x00)
+            {
+                flag_Z = 1;
+            }
+            else
+            {
+                flag_Z = 0;
+            }
+        }
+
+        // Update Parity flag.
+        private void updateParityFlag(char[] rb)
+        {
+            int i;
+
+            // Set Parity flag.
+            flag_P = 0;
+            for (i = 0; i < 8; i++)
+            {
+                if (rb[i] == 1)
+                {
+                    flag_P++;
+                }
+            }
+
+            if ((flag_P % 2) == 0)
+            {
+                flag_P = 1;
+            }
+            else
+            {
+                flag_P = 0;
+            }
+        }
+
+        // Add two bytes
+        private byte addTwoBytes(byte b1, byte b2, int CF)
+        {
+            int i;
+            byte result;
+            int carry = 0;
+
+            // Add with carry.
+            if (CF == 1)
+            {
+                carry = flag_CY;
+            }
+
+            char[] op1 = convertFromByte(b1);
+            char[] op2 = convertFromByte(b2);
+            char[] rb = new char[8];
+
+            flag_AC = 0;
+
+            for (i = 7; i >= 0; i--)
+            {
+                // Add two '1's.
+                if ((op1[i] == 1) & (op2[i] == 1))
+                {
+                    if (carry == 1)
+                    {
+                        rb[i] = (char)1;
+                    }
+                    else
+                    {
+                        rb[i] = (char)0;
+                    }
+                    carry = 1;
+
+                    // Update Auxiliary carry.
+                    if (i == 4)
+                    {
+                        flag_AC = 1;
+                    }
+                }
+                // Add two '0's.
+                else if ((op1[i] == 0) & (op2[i] == 0))
+                {
+                    if (carry == 1)
+                    {
+                        rb[i] = (char)1;
+                    }
+                    else
+                    {
+                        rb[i] = (char)0;
+                    }
+                    carry = 0;
+                }
+                // Add '1' and '0'
+                else
+                {
+                    if (carry == 1)
+                    {
+                        rb[i] = (char)0;
+                        carry = 1;
+
+                        // Update Auxiliary carry.
+                        if (i == 4)
+                        {
+                            flag_AC = 1;
+                        }
+                    }
+                    else
+                    {
+                        rb[i] = (char)1;
+                    }
+                }
+            }
+
+            updateSignFlag(rb);
+            updateCarryFlag(carry);
+
+            result = convertToByte(rb);
+
+            updateZeroFlag(result);
+            updateParityFlag(rb);
+
+            return result;
         }
 
         // Main loop
@@ -301,39 +506,75 @@
 
                 // Add register
                 // ADD r
-                case 0x80: break;
-                case 0x81: break;
-                case 0x82: break;
-                case 0x83: break;
-                case 0x84: break;
-                case 0x85: break;
-                case 0x87: break;
+                case 0x80:
+                    regA = addTwoBytes(regA, regB, 0);
+                    break;
+                case 0x81:
+                    regA = addTwoBytes(regA, regC, 0);
+                    break;
+                case 0x82:
+                    regA = addTwoBytes(regA, regD, 0);
+                    break;
+                case 0x83:
+                    regA = addTwoBytes(regA, regE, 0);
+                    break;
+                case 0x84:
+                    regA = addTwoBytes(regA, regH, 0);
+                    break;
+                case 0x85:
+                    regA = addTwoBytes(regA, regL, 0);
+                    break;
+                case 0x87:
+                    regA = addTwoBytes(regA, regA, 0);
+                    break;
 
                 // Add memory
                 // ADD M
-                case 0x86: break;
+                case 0x86:
+                    regA = addTwoBytes(regA, memory[(regH << 8) | regL], 0);
+                    break;
 
                 // Add immediate
                 // ADI data
-                case 0xC6: break;
+                case 0xC6:
+                    regA = addTwoBytes(regA, d1, 0);
+                    break;
 
                 // Add register with carry
                 // ADC r
-                case 0x88: break;
-                case 0x89: break;
-                case 0x8A: break;
-                case 0x8B: break;
-                case 0x8C: break;
-                case 0x8D: break;
-                case 0x8F: break;
+                case 0x88:
+                    regA = addTwoBytes(regA, regB, 1);
+                    break;
+                case 0x89:
+                    regA = addTwoBytes(regA, regC, 1);
+                    break;
+                case 0x8A:
+                    regA = addTwoBytes(regA, regD, 1);
+                    break;
+                case 0x8B:
+                    regA = addTwoBytes(regA, regE, 1);
+                    break;
+                case 0x8C:
+                    regA = addTwoBytes(regA, regH, 1);
+                    break;
+                case 0x8D:
+                    regA = addTwoBytes(regA, regL, 1);
+                    break;
+                case 0x8F:
+                    regA = addTwoBytes(regA, regA, 1);
+                    break;
 
                 // Add memory with carry
                 // ADC M
-                case 0x8E: break;
+                case 0x8E:
+                    regA = addTwoBytes(regA, memory[(regH << 8) | regL], 1);
+                    break;
 
                 // Add immediate with carry
                 // ACI data
-                case 0xCE: break;
+                case 0xCE:
+                    regA = addTwoBytes(regA, d1, 1);
+                    break;
 
                 // Subtract register
                 // SUB r
@@ -525,11 +766,15 @@
 
                 // Complement carry
                 // CMC
-                case 0x3F: break;
+                case 0x3F:
+                    flag_CY = (flag_CY == 1 ? 0 : 1);
+                    break;
 
                 // Set carry
                 // STC
-                case 0x37: break;
+                case 0x37:
+                    flag_CY = 1;
+                    break;
 
 
                 //////////////////
@@ -540,7 +785,9 @@
 
                 // Jump
                 // JMP addr
-                case 0xC3: break;
+                case 0xC3:
+                    regPC = (ushort)((d2 << 8) | d1);
+                    break;
 
                 // Conditional jump
                 // Jcondition addr
@@ -596,7 +843,9 @@
 
                 // Jump H and L indirect - move H and L to PC
                 // PCHL
-                case 0xE9: break;
+                case 0xE9:
+                    regPC = (ushort)((regH << 8) | regL);
+                    break;
 
 
                 ///////////////////////////////////////////
@@ -626,43 +875,63 @@
 
                 // Exchange stack top with H
                 // XTHL
-                case 0xE3: break;
+                case 0xE3:
+                    regTM = regL;
+                    regL = memory[regSP];
+                    memory[regSP] = regTM;
+
+                    regTM = regH;
+                    regH = memory[regSP + 1];
+                    memory[regSP + 1] = regTM;
+                    break;
 
                 // Move HL to SP
                 // SPHL
-                case 0xF9: break;
+                case 0xF9:
+                    regSP = (ushort)((regH << 8) | regL);
+                    break;
 
                 // Input
                 // IN port
-                case 0xDB: break;
+                case 0xDB:
+                    break;
 
                 // Output
                 // OUT port
-                case 0xD3: break;
+                case 0xD3:
+                    break;
 
                 // Enable interrupts
                 // EI
-                case 0xFB: break;
+                case 0xFB:
+                    EN_interrupt = true;
+                    break;
 
                 // Disable interrupts
                 // DI
-                case 0xF3: break;
+                case 0xF3:
+                    EN_interrupt = false;
+                    break;
 
                 // Halt
                 // HLT
-                case 0x76: break;
+                case 0x76:
+                    break;
 
                 // No op
                 // NOP
-                case 0x00: break;
+                case 0x00:
+                    break;
 
                 // Read Interrupt Masks
                 // RIM
-                case 0x20: break;
+                case 0x20:
+                    break;
 
                 // Set Interrupt Masks
                 // SIM
-                case 0x30: break;
+                case 0x30:
+                    break;
 
                 ////////////////////////////
                 // 250 instructions total //

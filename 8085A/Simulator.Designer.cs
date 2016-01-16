@@ -71,7 +71,6 @@
             this.cmdLabel = new System.Windows.Forms.Label();
             this.tboxCmd = new System.Windows.Forms.TextBox();
             this.rtbCmdWin = new System.Windows.Forms.RichTextBox();
-            this.cbShowMem = new System.Windows.Forms.CheckBox();
             this.registersGB.SuspendLayout();
             this.memoryGB.SuspendLayout();
             this.commandGB.SuspendLayout();
@@ -467,7 +466,7 @@
             // 
             // memoryRTB
             // 
-            this.memoryRTB.BackColor = System.Drawing.SystemColors.Window;
+            this.memoryRTB.BackColor = System.Drawing.Color.PowderBlue;
             this.memoryRTB.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.memoryRTB.Location = new System.Drawing.Point(7, 40);
             this.memoryRTB.Name = "memoryRTB";
@@ -478,7 +477,6 @@
             // 
             // commandGB
             // 
-            this.commandGB.Controls.Add(this.cbShowMem);
             this.commandGB.Controls.Add(this.btnRunCmd);
             this.commandGB.Controls.Add(this.cmdLabel);
             this.commandGB.Controls.Add(this.tboxCmd);
@@ -530,16 +528,6 @@
             this.rtbCmdWin.Size = new System.Drawing.Size(200, 254);
             this.rtbCmdWin.TabIndex = 0;
             this.rtbCmdWin.Text = "";
-            // 
-            // cbShowMem
-            // 
-            this.cbShowMem.AutoSize = true;
-            this.cbShowMem.Location = new System.Drawing.Point(114, 347);
-            this.cbShowMem.Name = "cbShowMem";
-            this.cbShowMem.Size = new System.Drawing.Size(92, 17);
-            this.cbShowMem.TabIndex = 4;
-            this.cbShowMem.Text = "Show memory";
-            this.cbShowMem.UseVisualStyleBackColor = true;
             // 
             // Simulator
             // 
@@ -611,7 +599,6 @@
         private System.Windows.Forms.TextBox tboxCmd;
         private System.Windows.Forms.RichTextBox rtbCmdWin;
         private System.Windows.Forms.RichTextBox memHdrRTB;
-        private System.Windows.Forms.CheckBox cbShowMem;
     }
 }
 

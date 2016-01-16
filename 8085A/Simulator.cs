@@ -11,14 +11,12 @@ namespace _8085A
     public partial class Simulator : Form
     {
         private CPU_8085A core1;
-        private int cmdLineNo;
 
         public Simulator()
         {
             InitializeComponent();
 
             core1 = new CPU_8085A();
-            cmdLineNo = 0;
         }
 
         // Display the memory header.
@@ -48,10 +46,6 @@ namespace _8085A
             StringBuilder mRTB = new StringBuilder();
             string iVal;
 
-            memoryRTB.SelectionStart = memoryRTB.TextLength;
-            memoryRTB.SelectionLength = 0;
-            memoryRTB.SelectionBackColor = Color.PowderBlue;
-
             for (i = 0; i < 4096; i++)
             {
                 iVal = i.ToString();
@@ -71,7 +65,6 @@ namespace _8085A
                 mRTB.Append(string.Format("0x{0:X2}", core1.memory[k + j]) + " \n");
             }
 
-            memoryRTB.SelectionBackColor = Color.PowderBlue;
             memoryRTB.AppendText(mRTB.ToString());
             mRTB.Clear();
 
@@ -110,12 +103,12 @@ namespace _8085A
             tboxRegTM.Text = string.Format("0x{0:X2}", core1.regTM);
 
             // Display status register.
-            tboxRegST.Text = string.Format("0x{0:X2}", core1.regST);
-            tboxStatZ.Text = "-";
-            tboxStatS.Text = "-";
-            tboxStatP.Text = "-";
-            tboxStatCY.Text = "-";
-            tboxStatAC.Text = "-";
+            tboxRegST.Text = string.Format("0x{0:X2}", core1.regFL);
+            tboxStatZ.Text = core1.flag_Z.ToString();
+            tboxStatS.Text = core1.flag_S.ToString();
+            tboxStatP.Text = core1.flag_P.ToString();
+            tboxStatCY.Text = core1.flag_CY.ToString();
+            tboxStatAC.Text = core1.flag_AC.ToString();
 
             sw.Stop();
             File.AppendAllText("performance.out","listRegisters: " 
@@ -189,12 +182,9 @@ namespace _8085A
             
             // Update the register debug info.
             listRegisters();
-
-            // Only update the memory debug info if the checkbox is selected.
-            if(cbShowMem.Checked)
-            {
-                listMemory();
-            }
+            // Update the memory debug info.
+            memoryRTB.Clear();
+            listMemory();
 
             //cmdLineNo++;
         }
