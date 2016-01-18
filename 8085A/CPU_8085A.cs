@@ -259,6 +259,156 @@
             return result;
         }
 
+        // Returns the Ones Complement.
+        private char[] onesComplement(char[] b)
+        {
+            int i;
+            char[] result = new char[8];
+
+            for(i = 0; i < 8; i++)
+            {
+                if(b[i] == (char) 0)
+                {
+                    result[i] = (char) 1;
+                }
+                else
+                {
+                    result[i] = (char) 0;
+                }
+            }
+
+            return result;
+        }
+
+        // Subtract byte
+        private byte subtractByte(byte b1, byte b2)
+        {
+            int i;
+            byte result;
+            int carry = 0;
+
+            char[] op1 = convertFromByte(b1);
+            char[] op2 = onesComplement(convertFromByte(b2));
+            char[] rb = new char[8];
+
+            flag_AC = 0;
+
+            for (i = 7; i >= 0; i--)
+            {
+                // Add two '1's.
+                if ((op1[i] == 1) & (op2[i] == 1))
+                {
+                    if (carry == 1)
+                    {
+                        rb[i] = (char)1;
+                    }
+                    else
+                    {
+                        rb[i] = (char)0;
+                    }
+                    carry = 1;
+
+                    // Update Auxiliary carry.
+                    if (i == 4)
+                    {
+                        flag_AC = 1;
+                    }
+                }
+                // Add two '0's.
+                else if ((op1[i] == 0) & (op2[i] == 0))
+                {
+                    if (carry == 1)
+                    {
+                        rb[i] = (char)1;
+                    }
+                    else
+                    {
+                        rb[i] = (char)0;
+                    }
+                    carry = 0;
+                }
+                // Add '1' and '0'
+                else
+                {
+                    if (carry == 1)
+                    {
+                        rb[i] = (char)0;
+                        carry = 1;
+
+                        // Update Auxiliary carry.
+                        if (i == 4)
+                        {
+                            flag_AC = 1;
+                        }
+                    }
+                    else
+                    {
+                        rb[i] = (char)1;
+                    }
+                }
+            }
+
+            char[] rb2 = new char[8];
+
+            if(carry == 1)
+            {
+                rb2 = addCarry(rb);
+                carry = 0;
+            }
+            else
+            {
+                rb2 = rb;
+            }
+
+            updateSignFlag(rb2);
+            updateCarryFlag(carry);
+
+            result = convertToByte(rb2);
+
+            updateZeroFlag(result);
+            updateParityFlag(rb2);
+
+            return result;
+        }
+
+        // Add carry to byte.
+        private char[] addCarry(char[] b)
+        {
+            int i;
+            char[] result = new char[8];
+            int carry = 1;
+            
+            for(i=7;i>=0;i--)
+            {
+                if((b[i] == (char)0) && (carry==1))
+                {
+                    result[i] = (char)1;
+                    carry = 0;
+                }
+                else if((b[i] == (char)0) && (carry==0))
+                {
+                    result[i] = (char)0;
+                }
+                else if((b[i] == (char)1) && (carry == 1))
+                {
+                    result[i] = (char)0;
+                    carry = 1;
+
+                    // Update Auxiliary carry.
+                    if(i == 4)
+                    {
+                        flag_AC = 1;
+                    }
+                }
+                else if((b[i] == (char)1) && (carry == 0))
+                {
+                    result[i] = (char)1;
+                }
+            }
+
+            return result;
+        }
+
         // Main loop
         public void run()
         {
@@ -578,21 +728,39 @@
 
                 // Subtract register
                 // SUB r
-                case 0x90: break;
-                case 0x91: break;
-                case 0x92: break;
-                case 0x93: break;
-                case 0x94: break;
-                case 0x95: break;
-                case 0x97: break;
+                case 0x90:
+                    regA = subtractByte(regA, regB);
+                    break;
+                case 0x91:
+                    regA = subtractByte(regA, regC);
+                    break;
+                case 0x92:
+                    regA = subtractByte(regA, regD);
+                    break;
+                case 0x93:
+                    regA = subtractByte(regA, regE);
+                    break;
+                case 0x94:
+                    regA = subtractByte(regA, regH);
+                    break;
+                case 0x95:
+                    regA = subtractByte(regA, regL);
+                    break;
+                case 0x97:
+                    regA = subtractByte(regA, regA);
+                    break;
 
                 // Subtract memory
                 // SUB M
-                case 0x96: break;
+                case 0x96:
+                    regA = subtractByte(regA, memory[(regH << 8) | regL]);
+                    break;
 
                 // Subtract immediate
                 // SUI data
-                case 0xD6: break;
+                case 0xD6:
+                    regA = subtractByte(regA, d1);
+                    break;
 
                 // Subtract register with borrow
                 // SBB r
@@ -614,31 +782,47 @@
 
                 // Increment register
                 // INR r
-                case 0x04: break;
-                case 0x0C: break;
-                case 0x14: break;
-                case 0x1C: break;
-                case 0x24: break;
-                case 0x2C: break;
-                case 0x3C: break;
+                case 0x04:
+                    break;
+                case 0x0C:
+                    break;
+                case 0x14:
+                    break;
+                case 0x1C:
+                    break;
+                case 0x24:
+                    break;
+                case 0x2C:
+                    break;
+                case 0x3C:
+                    break;
 
                 // Increment memory
                 // INR M
-                case 0x34: break;
+                case 0x34:
+                    break;
 
                 // Decrement register
                 // DCR r
-                case 0x05: break;
-                case 0x0D: break;
-                case 0x15: break;
-                case 0x1D: break;
-                case 0x25: break;
-                case 0x2D: break;
-                case 0x3D: break;
+                case 0x05:
+                    break;
+                case 0x0D:
+                    break;
+                case 0x15:
+                    break;
+                case 0x1D:
+                    break;
+                case 0x25:
+                    break;
+                case 0x2D:
+                    break;
+                case 0x3D:
+                    break;
 
                 // Decrement memory
                 // DCR M
-                case 0x35: break;
+                case 0x35:
+                    break;
 
                 // Increment register pair
                 // INX rp
